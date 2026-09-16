@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 214 70% 10%; /* Rich institutional navy #091c38 */
+    --foreground: 210 40% 98%;
+
+    --card: 214 60% 14%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 2%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 160 95% 12%; /* #023825 (UCCuyo Green) */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 36 78% 56%; /* #e8a133 (UCCuyo Gold) */
+    --accent-foreground: 222 47% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 160 95% 20%;
+
+    --surface: 222 47% 4%;
+    --radius: 1rem;
+    
+    --tech-purple: 271 91% 65%;
+    --uccuyo-green: 160 95% 12%;
+    --uccuyo-gold: 36 78% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-inte antialiased selection:bg-accent selection:text-background max-w-[100vw] overflow-x-hidden;
+  }
+  main {
+    @apply relative z-10;
+  }
+  section {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+  button,
+  a {
+    @apply transition-all duration-300 ease-out;
+  }
+  button:focus-visible,
+  a:focus-visible {
+    outline: 3px solid rgba(232, 161, 51, 0.8);
+    outline-offset: 4px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat tracking-tight font-bold;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 60;
+  padding: 0.75rem 1rem;
+  background: rgba(8, 18, 47, 0.96);
+  color: white;
+  border-radius: 9999px;
+  transform: translateX(-140%);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0;
+}
+
+.skip-link:focus-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  @apply bg-white/10 backdrop-blur-2xl border border-white/10 shadow-2xl;
+}
+
+.glass-card {
+  @apply bg-surface/60 backdrop-blur-xl border border-white/10 shadow-2xl hover:border-white/20 transition-all duration-300;
+}
+
+/* Custom Gradients */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#e8a133] via-[#ffcc33] to-[#023825];
+}
+
+.bg-mesh {
+  background-color: hsl(var(--background));
+  background-image: 
+    linear-gradient(to bottom, rgba(19, 51, 25, 0.95) 0%, rgba(19, 51, 25, 0.4) 140px, transparent 280px),
+    radial-gradient(at 10% 8%, hsla(160, 95%, 15%, 0.75) 0px, transparent 55%),
+    radial-gradient(at 90% 15%, hsla(36, 85%, 45%, 0.35) 0px, transparent 55%),
+    radial-gradient(at 50% 85%, hsla(160, 95%, 20%, 0.45) 0px, transparent 60%);
+}
+
+
+
+/* Smooth transition for theme switching */
+* {
+  @apply transition-all duration-300;
+}
+
+/* Custom animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Light Mode Theme Overrides for Modo Diurno */
+html.light {
+  --background: 210 40% 98%;
+  --foreground: 222 47% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 10%;
+  --surface: 210 40% 96%;
+}
+
+html.light .bg-mesh {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 10% 10%, hsla(160, 80%, 90%, 0.8) 0px, transparent 60%),
+    radial-gradient(at 90% 15%, hsla(42, 95%, 90%, 0.7) 0px, transparent 60%),
+    radial-gradient(at 50% 85%, hsla(160, 80%, 92%, 0.7) 0px, transparent 60%);
+}
+
+/* Remove dirty shadows from titles and text in light mode */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light p,
+html.light span {
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+/* Fix text gradient in light mode to rich dark amber-gold */
+html.light .from-amber-300.via-uccuyoGold.to-yellow-200 {
+  background-image: linear-gradient(to right, #d97706, #b45309, #d97706) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+html.light p,
+html.light .text-gray-300,
+html.light .text-gray-400,
+html.light .text-blue-100\/90 {
+  color: #334155 !important;
+}
+
+/* Fix green interactive tags in light mode */
+html.light .text-green-300,
+html.light .text-green-400 {
+  color: #047857 !important;
+}
+
+html.light .bg-green-500\/20,
+html.light .bg-green-500\/10 {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  border-color: rgba(16, 185, 129, 0.25) !important;
+  box-shadow: none !important;
+}
+
+/* Fix glass panels and cards */
+html.light .glass-panel,
+html.light .glass-card {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+  color: #0f172a !important;
+}
+
+/* Ensure solid dark green buttons (e.g. Ingresar al Campus Virtual) and card icons keep white text & white icons */
+html.light .bg-primary,
+html.light a.bg-primary,
+html.light button.bg-primary,
+html.light [class*="bg-[#023825]"],
+html.light [class*="bg-emerald-900"] {
+  background-color: #023825 !important;
+  color: #ffffff !important;
+}
+
+html.light .bg-primary *,
+html.light a.bg-primary *,
+html.light button.bg-primary *,
+html.light [class*="bg-[#023825]"] *,
+html.light [class*="bg-emerald-900"] * {
+  color: #ffffff !important;
+  fill: currentColor !important;
+}
+
+/* Floating action buttons in light mode (Palette & Headphones) */
+html.light button.bg-neutral-900,
+html.light button.bg-neutral-950,
+html.light button.bg-background {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(15, 23, 42, 0.15) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+html.light button.bg-neutral-900 *,
+html.light button.bg-neutral-950 *,
+html.light button.bg-background * {
+  color: #0f172a !important;
+}
+
+html.light .bg-white\/15,
+html.light .bg-white\/10 {
+  background-color: rgba(15, 23, 42, 0.06) !important;
+  border-color: rgba(15, 23, 42, 0.15) !important;
+  color: #0f172a !important;
+}
+
+/* BackgroundSelector Floating Menu in Light Mode */
+html.light .bg-neutral-950\/85 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15) !important;
+  color: #0f172a !important;
+}
+
+html.light .bg-neutral-950\/85 .border-b {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+html.light .bg-neutral-950\/85 span.text-gray-400 {
+  color: #475569 !important;
+}
+
+html.light .bg-neutral-950\/85 span.text-gray-500 {
+  color: #64748b !important;
+}
+
+html.light .bg-neutral-950\/85 button {
+  background-color: rgba(15, 23, 42, 0.04) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  color: #1e293b !important;
+}
+
+html.light .bg-neutral-950\/85 button:hover {
+  background-color: rgba(15, 23, 42, 0.08) !important;
+  color: #0f172a !important;
+}
+
+html.light .bg-neutral-950\/85 button .text-gray-500 {
+  color: #64748b !important;
+}
+
+html.light .bg-neutral-950\/85 button.bg-accent\/10 {
+  background-color: rgba(217, 119, 6, 0.12) !important;
+  border-color: #d97706 !important;
+  color: #0f172a !important;
+}
+
+html.light .bg-neutral-950\/85 button .bg-white\/5 {
+  background-color: rgba(15, 23, 42, 0.06) !important;
+}
+
+html.light .bg-neutral-950\/85 button .bg-accent\/20 {
+  background-color: rgba(217, 119, 6, 0.2) !important;
+}
+
+/* Floating Palette Trigger Button in Light Mode */
+html.light button[aria-label="Selector de ambiente de fondo"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: rgba(15, 23, 42, 0.15) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+html.light button[aria-label="Selector de ambiente de fondo"] svg {
+  color: #0f172a !important;
+}

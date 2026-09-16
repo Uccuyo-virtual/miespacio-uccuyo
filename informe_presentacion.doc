@@ -1,0 +1,73 @@
+Informe Ejecutivo: Plataforma Estudiantil Virtual Dead
+
+1. Vision y Proposito
+Hemos desarrollado una plataforma web de vanguardia disenada para revolucionar la manera en que los estudiantes gestionan su carrera. El objetivo principal es ofrecer un ecosistema digital que no solo facilite el acceso al Campus Virtual, sino que brinde herramientas inteligentes para optimizar el rendimiento academico, cuidar el bienestar mental y mejorar la educacion financiera de los alumnos.
+
+La plataforma ha sido construida con una estetica premium y moderna, enfocada en brindar una Experiencia de Usuario (UX) intuitiva, atractiva y de nivel internacional.
+
+---
+
+2. Arquitectura de Funcionalidades (Como esta conformada la web?)
+
+La web se divide en secciones clave, cada una orientada a resolver una problematica real del estudiante:
+
+A. Modulo de Enfoque y Bienestar (Hero Section)
+Propuesta de valor: El equilibrio perfecto entre foco profundo y bienestar mental.
+Funcionalidades: Integracion directa con tecnicas de estudio como Pomodoro Integrado y un Modo Concentracion inmersivo para reducir el estres y aumentar la retencion.
+
+B. Pausa Consciente
+Un modulo dedicado exclusivamente a la salud mental del estudiante durante sus sesiones de estudio intenso.
+Prevencion del burnout: Alienta y guia a los alumnos a tomar descansos programados ("Tomar un Respiro") para recargar energia, realizar estiramientos o ejercicios de respiracion, mejorando asi la asimilacion del conocimiento a largo plazo.
+
+C. Calculadora de Libertad (Ahorro y Sustentabilidad)
+Una herramienta interactiva que fomenta la conciencia financiera y ecologica.
+Gestion de Movilidad: Permite al estudiante calcular el costo mensual de su traslado a la universidad (Auto, Bicicleta o Colectivo) en base a los kilometros de distancia.
+Impacto en Billetera: Calcula el costo real (incluyendo nafta, mantenimiento o tarifas dinamicas de transporte publico por tramos) para que el alumno visualice su gasto o ahorro mensual.
+Impacto Ecologico (Eco-Friendly): Muestra de forma transparente la huella de carbono (CO2) generada por el transporte elegido, fomentando el uso de medios sustentables como la bicicleta (0.0kg CO2).
+Tiempo de Viaje: Estima con precision las horas mensuales invertidas en transito, ayudando a la organizacion del tiempo.
+
+D. Arquitecto de Tiempo (AI Planning)
+Un simulador inteligente que ayuda al alumno a planificar su semestre con responsabilidad.
+Gestor Flex: El estudiante ingresa sus horas disponibles semanales (considerando trabajo u otras obligaciones).
+Performance Predictiva: Basado en la disponibilidad, el sistema clasifica su ritmo (Modo Supervivencia, Ritmo Equilibrado, Full-Time) y proyecta una Performance Academica (A+, A, B), sugiriendo un limite sano de materias a cursar.
+
+E. Wallet Estudiantil (UCCuyo Perks)
+Un sistema de beneficios exclusivos para aliviar la carga economica del alumno.
+Categorizacion: Ofrece descuentos y beneficios en Software (ej. Licencias Adobe), Libros, Comida, Deportes y Entretenimiento (ej. Cinemark 2x1).
+Experiencia Digital: Interfaz moderna estilo billetera virtual donde el alumno puede copiar codigos de descuento con un clic.
+
+F. Panel del Estudiante
+El centro de control personalizado para cada alumno.
+Seguimiento Integral: Permite al estudiante tener una vision global de su progreso, unificando el acceso a sus materias, notificaciones importantes y acceso rapido a las herramientas de rendimiento y bienestar.
+
+G. Ventajas del Campus Virtual Integrado
+La plataforma actua como una puerta de entrada mejorada hacia la experiencia universitaria digital.
+Centralizacion: Evita que el alumno tenga que navegar por multiples sistemas diferentes. Todo lo necesario para su carrera esta a un clic de distancia.
+Agilidad y Accesibilidad: Interfaz veloz que garantiza que el acceso a los recursos academicos y administrativos sea fluido, sin importar desde que dispositivo se conecten.
+
+---
+
+3. Mejoras Recientes y Optimizacion Tecnica
+Recientemente se ha llevado a cabo una fase intensiva de pulido tecnico y de diseno para llevar la plataforma a un estandar profesional:
+
+- Accesibilidad Universal (Dark & Light Mode): Se implemento una paleta de colores dinamica que garantiza que la plataforma sea 100% legible y elegante tanto en entornos de poca luz (Modo Oscuro neon) como a plena luz del dia (Modo Claro con alto contraste).
+- Logica Financiera Realista: Se ajustaron los algoritmos matematicos de la Calculadora de Libertad para que reflejen tarifas de transporte publico reales (escalonadas por distancia) y variables de mantenimiento automotor.
+- Perfeccionamiento de Interfaz (UI/UX): Se eliminaron elementos nativos del navegador (como barras de scroll invasivas) reemplazandolos por navegacion tactil moderna. Ademas, se mejoro la jerarquia tipografica para que los datos importantes capten la atencion instantaneamente.
+
+---
+
+4. Stack Tecnologico (Para el area de IT)
+La plataforma no es un sitio web tradicional, sino una Web App de alto rendimiento:
+Frontend: Construido con React.js y Vite, lo que garantiza tiempos de carga ultrarrapidos.
+Estilos y Animaciones: Utiliza Tailwind CSS para un diseno responsivo milimetrico y Framer Motion para micro-animaciones dinamicas que generan interaccion.
+Infraestructura y Hosting: Desplegada en la nube a traves de Google Firebase Hosting, otorgando alta disponibilidad, seguridad SSL nativa y escalabilidad global automatica.
+
+---
+
+5. Proximos Pasos (Estado de Avance)
+A nivel tecnico y de desarrollo de software, la plataforma se encuentra completamente funcional y optimizada. El unico paso pendiente para el lanzamiento definitivo es la actualizacion y definicion de los textos (frases, palabras y redaccion final) que se mostraran en la web. Esto se llevara a cabo una vez que el equipo tecnopedagogico realice su revision y apruebe el contenido final, para asegurar que este 100% alineado con los objetivos comunicacionales de la institucion.
+
+---
+
+Conclusion
+La plataforma Virtual Dead ha dejado de ser un simple portal de informacion para convertirse en una herramienta de retencion y acompanamiento estudiantil. Al brindar soluciones concretas de organizacion de tiempo, bienestar psicologico, beneficios economicos y acceso centralizado, la institucion se posiciona a la vanguardia de la experiencia universitaria digital.
