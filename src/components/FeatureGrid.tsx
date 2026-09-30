@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion"
-import { GraduationCap, Trophy, Sparkles, Dumbbell, Monitor, BookText, Car, Clock, Battery, BatteryMedium, BatteryFull, Bus, Bike, ChevronLeft, ChevronRight, Check, Coins } from "lucide-react"
+import { GraduationCap, Sparkles, Car, Clock, Battery, BatteryMedium, BatteryFull, Bus, Bike, Coins } from "lucide-react"
 import { useState } from "react"
 import { trackEvent } from "../lib/analytics"
 
@@ -130,71 +130,6 @@ export function FeatureGrid() {
     }
 
     const plan = getStudyRecommendation(studyHours)
-
-    // 3. Beneficios UCCuyo (Institucionales y Académicos)
-    const allPerks = [
-        { 
-            title: "Google Workspace", 
-            icon: Monitor, 
-            badge: "100% Bonificado", 
-            category: "Tecnología",
-            bg: "from-emerald-900/90 via-teal-950 to-emerald-950", 
-            description: "Correo @uccuyo.edu.ar, Google Meet sin límite y almacenamiento en Drive para tus entregas.",
-            access: "Automático con tu cuenta institucional"
-        },
-        { 
-            title: "Microsoft 365", 
-            icon: Monitor, 
-            badge: "Licencia Oficial", 
-            category: "Tecnología",
-            bg: "from-blue-950/90 via-indigo-950 to-slate-950", 
-            description: "Word, Excel, PowerPoint y Teams oficiales para descargar e instalar en PC, tablet y celular.",
-            access: "Descarga directa con tu correo UCCuyo"
-        },
-        { 
-            title: "Biblioteca Digital", 
-            icon: BookText, 
-            badge: "Acceso 24/7", 
-            category: "Académico",
-            bg: "from-teal-950/90 via-emerald-950 to-green-950", 
-            description: "Más de 100.000 libros de texto, papers académicos y manuales completos para tus materias.",
-            access: "Ingreso directo desde el Campus Virtual"
-        },
-        { 
-            title: "Posgrados y Cursos", 
-            icon: Trophy, 
-            badge: "Hasta 30% OFF", 
-            category: "Académico",
-            bg: "from-amber-950/90 via-yellow-950 to-stone-950", 
-            description: "Aranceles preferenciales en diplomaturas, especializaciones y cursos de extensión universitaria.",
-            access: "Para alumnos regulares y egresados"
-        },
-        { 
-            title: "Campo de Deportes", 
-            icon: Dumbbell, 
-            badge: "Tarifa Estudiante", 
-            category: "Deportes",
-            bg: "from-green-950/90 via-emerald-950 to-teal-950", 
-            description: "Canchas, piscina y actividades deportivas recreativas en los predios de la universidad.",
-            access: "Presentando tu credencial digital"
-        }
-    ]
-    const [selectedCategory, setSelectedCategory] = useState("Todos")
-    const filteredPerks = selectedCategory === "Todos" 
-        ? allPerks 
-        : allPerks.filter(p => p.category === selectedCategory)
-    
-    const [activePerk, setActivePerk] = useState(0)
-
-    const handlePrevPerk = () => {
-        setActivePerk(prev => (prev === 0 ? filteredPerks.length - 1 : prev - 1))
-    }
-
-    const handleNextPerk = () => {
-        setActivePerk(prev => (prev === filteredPerks.length - 1 ? 0 : prev + 1))
-    }
-    
-    const categories = ["Todos", "Tecnología", "Académico", "Deportes"]
 
     return (
         <section id="herramientas" className="py-24 bg-background relative overflow-hidden transition-colors duration-500">
@@ -432,7 +367,7 @@ export function FeatureGrid() {
                         <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 blur-[50px] rounded-full -translate-y-8 translate-x-8" />
                     </motion.div>
 
-                    {/* Beneficios UCCuyo (Institucionales y Académicos) */}
+                    {/* Beneficios UCCuyo (Institucionales y Académicos - Próximamente Habilitado) */}
                     <motion.div
                         variants={itemVariants}
                         whileHover={{ scale: 1.02, zIndex: 10 }}
@@ -444,121 +379,85 @@ export function FeatureGrid() {
                                     <GraduationCap className="w-5 h-5 text-accent animate-pulse" />
                                     <h3 className="text-lg font-bold font-montserrat tracking-normal uppercase">Beneficios</h3>
                                 </div>
-                                <div className="px-2.5 py-0.5 rounded-full bg-uccuyoGold/10 border border-uccuyoGold/20 text-[9px] font-bold text-uccuyoGold uppercase tracking-wider">
-                                    Comunidad Alumnos
+                                <div className="px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-[9px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+                                    <Clock className="w-3 h-3 text-amber-400 animate-pulse" />
+                                    <span>Próximamente</span>
                                 </div>
                             </div>
                             
-                            {/* Filter Tags */}
-                            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                                {categories.map(cat => (
-                                    <button
+                            {/* Preview Tags */}
+                            <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none no-scrollbar [&::-webkit-scrollbar]:hidden">
+                                {["Deportes", "Tecnología", "Académico", "Descuentos"].map(cat => (
+                                    <span
                                         key={cat}
-                                        onClick={() => {
-                                            setSelectedCategory(cat);
-                                            setActivePerk(0);
-                                            trackEvent('filter_beneficios', { category: cat });
-                                        }}
-                                        className={`px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest whitespace-nowrap transition-all border ${
-                                            selectedCategory === cat 
-                                                ? 'bg-emerald-600 border-emerald-500 text-white shadow-lg shadow-emerald-600/20' 
-                                                : 'bg-white/5 border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
-                                        }`}
+                                        className="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-widest whitespace-nowrap bg-white/5 border border-white/10 text-gray-400"
                                     >
                                         {cat}
-                                    </button>
+                                    </span>
                                 ))}
                             </div>
                         </div>
 
-                        {filteredPerks.length > 0 ? (
-                            <div className="relative w-full space-y-3 z-10">
-                                <motion.div 
-                                    key={filteredPerks[activePerk].title}
-                                    initial={{ opacity: 0, scale: 0.96 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="relative w-full rounded-2xl p-4 sm:p-5 shadow-xl text-white flex flex-col justify-between min-h-[185px] overflow-hidden border border-white/10"
-                                >
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${filteredPerks[activePerk].bg} opacity-95 z-0`} />
-                                    
-                                    {/* Encabezado del beneficio */}
-                                    <div className="relative z-10 flex justify-between items-start">
-                                        <div>
-                                            <span className="text-white/70 text-[8px] font-black uppercase tracking-widest block">
-                                                {filteredPerks[activePerk].category}
-                                            </span>
-                                            <span className="inline-block px-2 py-0.5 bg-white/15 border border-white/20 rounded-md text-[10px] font-bold text-white backdrop-blur-sm mt-1 shadow-sm">
-                                                {filteredPerks[activePerk].badge}
-                                            </span>
-                                        </div>
-                                        {(() => {
-                                            const Icon = filteredPerks[activePerk].icon;
-                                            return (
-                                                <div className="p-2 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
-                                                    <Icon className="w-5 h-5 text-white drop-shadow-md" />
-                                                </div>
-                                            );
-                                        })()}
+                        {/* Tarjeta Central Informativa - Próximamente Habilitado */}
+                        <div className="relative w-full space-y-3 z-10 my-auto">
+                            <div className="relative w-full rounded-2xl p-4 sm:p-5 shadow-xl text-white flex flex-col justify-between overflow-hidden border border-amber-500/20 bg-gradient-to-br from-amber-950/40 via-stone-900/60 to-slate-950/80">
+                                <div className="flex justify-between items-start mb-3">
+                                    <div>
+                                        <span className="text-amber-400/80 text-[8px] font-black uppercase tracking-widest block">
+                                            Comunidad UCCuyo
+                                        </span>
+                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-500/20 border border-amber-500/30 rounded-md text-[10px] font-bold text-amber-300 backdrop-blur-sm mt-1">
+                                            <Sparkles className="w-3 h-3 text-amber-400" />
+                                            <span>Próximamente Habilitado</span>
+                                        </span>
                                     </div>
-
-                                    {/* Contenido central */}
-                                    <div className="relative z-10 my-2">
-                                        <h4 className="text-xl font-black italic tracking-tighter text-white">
-                                            {filteredPerks[activePerk].title}
-                                        </h4>
-                                        <p className="text-[11px] text-slate-200/90 font-medium leading-relaxed mt-1">
-                                            {filteredPerks[activePerk].description}
-                                        </p>
+                                    <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400">
+                                        <Clock className="w-5 h-5" />
                                     </div>
+                                </div>
 
-                                    {/* Pie de acceso */}
-                                    <div className="relative z-10 pt-2 border-t border-white/10 flex items-center gap-1.5 text-[10px] font-semibold text-emerald-300">
-                                        <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                                        <span className="truncate">{filteredPerks[activePerk].access}</span>
+                                <h4 className="text-lg font-black tracking-tight text-white mb-1.5">
+                                    Club de Convenios y Beneficios
+                                </h4>
+
+                                <p className="text-[11px] text-slate-300 font-medium leading-relaxed mb-3">
+                                    Estamos gestionando nuevos acuerdos y beneficios institucionales exclusivos para la comunidad de alumnos. Próximamente podrás acceder a todos los descuentos y servicios desde aquí.
+                                </p>
+
+                                <div className="space-y-1.5 pt-2 border-t border-white/10 text-[10px] font-medium text-slate-300">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                                        <span>Campo de Deportes y Recreación</span>
                                     </div>
-                                </motion.div>
-
-                                {/* Controles de Navegación Lateral y Paginación */}
-                                <div className="flex items-center justify-between px-1 pt-1">
-                                    <button
-                                        onClick={handlePrevPerk}
-                                        title="Beneficio anterior"
-                                        className="p-1.5 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-white/80 hover:text-white transition-all active:scale-95"
-                                    >
-                                        <ChevronLeft className="w-4 h-4" />
-                                    </button>
-
-                                    <div className="flex items-center gap-1.5">
-                                        {filteredPerks.map((_, i) => (
-                                            <button
-                                                key={i}
-                                                onClick={() => setActivePerk(i)}
-                                                title={`Ir al beneficio ${i + 1}`}
-                                                className={`h-1.5 rounded-full transition-all ${
-                                                    i === activePerk ? 'bg-uccuyoGold w-4' : 'w-1.5 bg-white/20 hover:bg-white/40'
-                                                }`}
-                                            />
-                                        ))}
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                                        <span>Software y Licencias Oficiales</span>
                                     </div>
-
-                                    <button
-                                        onClick={handleNextPerk}
-                                        title="Beneficio siguiente"
-                                        className="p-1.5 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-white/80 hover:text-white transition-all active:scale-95"
-                                    >
-                                        <ChevronRight className="w-4 h-4" />
-                                    </button>
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                                        <span>Aranceles preferenciales en cursos</span>
+                                    </div>
                                 </div>
                             </div>
-                        ) : (
-                            <div className="flex-1 flex items-center justify-center text-gray-500 text-xs italic">
-                                No hay beneficios en esta categoría
-                            </div>
-                        )}
+                        </div>
 
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-[60px] rounded-full -translate-y-16 translate-x-16" />
-                        <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-teal-500/5 blur-[50px] rounded-full" />
+                        {/* Aviso Institucional para Alumnos */}
+                        <div className="p-3.5 rounded-2xl border bg-amber-500/10 border-amber-500/20 flex items-start gap-3 relative z-10 mt-3">
+                            <div className="p-2 rounded-xl bg-white/10 text-amber-400 shrink-0 mt-0.5">
+                                <Clock className="w-4 h-4" />
+                            </div>
+                            <div>
+                                <div className="text-xs font-black uppercase tracking-tight text-amber-400">
+                                    En Gestión Institucional
+                                </div>
+                                <p className="text-[11px] text-slate-300 font-medium leading-tight mt-1">
+                                    Sección en desarrollo. Los convenios se activarán progresivamente durante el ciclo lectivo.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 blur-[60px] rounded-full -translate-y-16 translate-x-16" />
+                        <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-yellow-500/5 blur-[50px] rounded-full" />
                     </motion.div>
 
                 </motion.div>
